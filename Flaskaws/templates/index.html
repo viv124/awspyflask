@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Name</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Enter Your Name</h1>
+        <form method="POST" action="/greet">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% if greeting %}
+        <h2 class="text-center mt-3"> {{ greeting }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
