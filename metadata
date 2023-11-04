@@ -1,0 +1,6 @@
+aws ec2 create-key-pair --key-name vivkey --query 'KeyMaterial' --output text > vivkey.pem
+aws ec2 create-security-group --group-name SECMY --description "My security group" --vpc-id vpc-07a4b694d766b8483
+aws ec2 run-instances --image-id ami-01c647eace872fc02 --count 1 --instance-type t2.micro --key-name vivkey --security-group-ids sg-0c76191d0394cf032 --subnet subnet-094b66fe378adf0e4
+
+curl -s http:/169.254.169.254/latest/meta-data
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/dynamic/instance-identity/document
