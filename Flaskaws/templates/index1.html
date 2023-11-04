@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Entry</title>
+</head>
+<body>
+    <h1>Enter Your Marks</h1>
+    <form method="post" action="/result">
+        <label for="marks">Enter Marks:</label>
+        <input type="number" name="marks" id="marks" required>
+        <br>
+        <label for="school">Select School:</label>
+        <select name="school" id="school">
+            {% for id, school in schools.items() %}
+            <option value="{{ id }}">{{ school['name'] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
